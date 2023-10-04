@@ -4,7 +4,7 @@ Data Feeder is an oracle deployed on Topos, a fully interoperable blockchain by 
 
 ### Learn More About Oracle
 
-![Oracle Basics](./oracl-basics.png)
+![Oracle Basics](./oracle-basics.png)
 
 To learn more check [Ethereum Foundation Blog](https://ethereum.org/en/developers/docs/oracles)
 
