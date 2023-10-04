@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+name: data-feeder
+
+jobs:
+  check:
+    strategy:
+      fail-fast: true
+    name: Data Feeder project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Build Smart Contracts
+        run: |
+          forge --version
+          forge build --sizes
+        id: build
+        
+      - name: Run tests
+        run: forge test -vvv
+        id: test
+        
+      - name: Check linting  
+        run: forge fmt --check
+        id: lint
