@@ -1,6 +1,6 @@
 ## Data Feeder
 
-Data Feeder is an oracle deployed on Topos, a fully interoperable blockchain by zero-knowledge proofs. The data feeder will help you to fetch actual world data for your smart contract.
+Data Feeder is an oracle deployed on Topos, a fully interoperable blockchain by zero-knowledge proofs. The data feeder will help you to fetch actual world data for your smart contract. Feel free to check our [notion page](https://www.notion.so/Data-Feeder-10698af3252343f6b6975ac2f359afa7).
 
 ### Learn More About Oracle
 
