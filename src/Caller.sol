@@ -18,6 +18,10 @@ contract Caller is Ownable {
         _;
     }
 
+    event OracleAddressChanged(address indexed oracleAddress);
+    event RandomNumberRequested(uint256 indexed id);
+    event RandomNumberReceived(uint256 indexed id, uint256 number);
+
     constructor() Ownable(msg.sender) {}
 
     function setRandOracleAddress(address newAddress) external onlyOwner {
@@ -43,9 +47,4 @@ contract Caller is Ownable {
 
         emit RandomNumberReceived(id, randomNumber);
     }
-
-    event OracleAddressChanged(address indexed oracleAddress);
-    event RandomNumberRequested(uint256 indexed id);
-    event RandomNumberReceived(uint256 indexed id, uint256 number);
 }
-

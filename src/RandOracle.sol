@@ -11,7 +11,8 @@ contract RandOracle is Ownable {
     uint256 private randNonce = 0;
 
     mapping(uint256 => bool) private pendingRequests;
-    mapping(bytes32 => uint256) public apiKeyUsage;
+    mapping(string => uint256) public apiKeyUsage;
+    mapping(address => string) public apiKeyByAddress;
 
     struct Response {
         address providerAddress;
@@ -21,16 +22,28 @@ contract RandOracle is Ownable {
 
     mapping(uint256 => Response[]) private idToResponses;
 
+    modifier onlyRegistratedUser() {
+        require(bytes(apiKeyByAddress[msg.sender]).length > 0, "Unauthorized.");
+        _;
+    }
+
     event RandomNumberRequested(uint256 indexed id, address callerAddress);
     event RandomNumberReturned(uint256 indexed id, uint256 randomNumber, address callerAddress);
+    event AddApiKey(string indexed _apiKey, address indexed _newUser);
 
     constructor() Ownable(msg.sender) {}
 
-    function requestRandomNumber() external returns (uint256) {
-        randNonce++;
-        uint256 id = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, randNonce))) % 1000;
+    function addNewUser(string memory _apiKey, address _newUser) external onlyOwner {
+        apiKeyByAddress[_newUser] = _apiKey;
+        emit AddApiKey(_apiKey, _newUser);
+    }
+
+    function requestRandomNumber() external onlyRegistratedUser returns (uint256) {
+        uint256 id = randNonce;
         pendingRequests[id] = true;
 
+        randNonce++;
+        apiKeyUsage[apiKeyByAddress[msg.sender]]++;
         emit RandomNumberRequested(id, msg.sender);
         return id;
     }
