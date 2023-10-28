@@ -10,8 +10,8 @@ interface IRandOracle {
 contract Caller is Ownable {
     IRandOracle private randOracle;
 
-    mapping(uint256 => bool) requests;
-    mapping(uint256 => uint256) results;
+    mapping(uint256 => bool) public requests;
+    mapping(uint256 => uint256) public results;
 
     modifier onlyRandOracle() {
         require(msg.sender == address(randOracle), "Unauthorized.");
@@ -48,3 +48,6 @@ contract Caller is Ownable {
         emit RandomNumberReceived(id, randomNumber);
     }
 }
+
+// cast send 0x0f5BD75fbB7593Efa4dCC013Ae19b9F498459223 "function setRandOracleAddress(address newAddress)"  0xAc91bDd0EcbeC973a802eD9fc163706D59EB4BA5  --rpc-url https://rpc.topos-subnet.testnet-1.topos.technology --private-key 6d97bda69af03bae83764c240a89ff090538eb34500e2c2e23addfd8b5e4fdcc
+// cast send 0x0f5BD75fbB7593Efa4dCC013Ae19b9F498459223 "function getRandomNumber()"    --rpc-url https://rpc.topos-subnet.testnet-1.topos.technology --private-key 6d97bda69af03bae83764c240a89ff090538eb34500e2c2e23addfd8b5e4fdcc --legacy
