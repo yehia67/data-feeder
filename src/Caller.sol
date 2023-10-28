@@ -10,8 +10,8 @@ interface IRandOracle {
 contract Caller is Ownable {
     IRandOracle private randOracle;
 
-    mapping(uint256 => bool) requests;
-    mapping(uint256 => uint256) results;
+    mapping(uint256 => bool) public requests;
+    mapping(uint256 => uint256) public results;
 
     modifier onlyRandOracle() {
         require(msg.sender == address(randOracle), "Unauthorized.");
