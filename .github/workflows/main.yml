@@ -34,3 +34,7 @@ jobs:
       - name: Check linting  
         run: forge fmt --check
         id: lint
+
+      - name: Test smart contracts  
+        run: forge test
+        id: test
