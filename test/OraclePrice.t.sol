@@ -30,11 +30,11 @@ contract OraclePriceTest is Test {
     function testOracleFullRequest() public {
         vm.startPrank(userA);
         vm.deal(userA, fees);
-        uint256 id = oraclePrice.requestOracle{value: fees}(fiatSymbol,cryptoSymbol);
+        uint256 id = oraclePrice.requestOracle{value: fees}(fiatSymbol, cryptoSymbol);
         assertTrue(oraclePrice.pendingRequests(id));
         vm.stopPrank();
 
-        oraclePrice.setOracleResult(0,fiatSymbol,2);
+        oraclePrice.setOracleResult(0, fiatSymbol, 2);
         assertFalse(oraclePrice.pendingRequests(0));
     }
 
@@ -42,7 +42,7 @@ contract OraclePriceTest is Test {
         vm.startPrank(userNotRegistrated);
         vm.deal(userNotRegistrated, fees);
         vm.expectRevert();
-        oraclePrice.requestOracle{value: fees}(fiatSymbol,cryptoSymbol);
+        oraclePrice.requestOracle{value: fees}(fiatSymbol, cryptoSymbol);
     }
 
     function testRevertIfUserHasNoFees() public {
@@ -50,7 +50,7 @@ contract OraclePriceTest is Test {
         oraclePrice.addNewUser(apiKey, userWithNoBalance);
         vm.startPrank(userWithNoBalance);
         vm.expectRevert();
-        oraclePrice.requestOracle{value: fees}(fiatSymbol,cryptoSymbol);
+        oraclePrice.requestOracle{value: fees}(fiatSymbol, cryptoSymbol);
     }
 
     function testOwnerWithdrawAllFees() public {
