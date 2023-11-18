@@ -10,6 +10,19 @@ Smart Contract Repository(this one)
 
 Frontend Repository(soon)
 
+### Prerequisites 
+- [Install foundry](https://book.getfoundry.sh/getting-started/installation)
+
+### Install And Run Project
+Install Packages
+ ```sh
+   forge install
+ ```
+ Build Smart Contracts
+```sh
+   forge build
+```
+
 
 ### Learn More About Oracle
 
