@@ -22,7 +22,10 @@ Install Packages
 ```sh
    forge build
 ```
-
+Test Smart Contracts
+```sh
+   forge test
+```
 
 ### Learn More About Oracle
 
