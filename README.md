@@ -8,7 +8,7 @@ Smart Contract Repository(this one)
 
 [Backend Repository](https://github.com/yehia67/data-feeder)
 
-Frontend Repository(soon)
+[Frontend Repository](https://github.com/yehia67/data-feeder-dashboard)
 
 ### Prerequisites 
  [Install foundry](https://book.getfoundry.sh/getting-started/installation)
