@@ -35,7 +35,6 @@ contract OracleApi is BaseOracle {
 
         // Clean up
         delete pendingRequests[id];
-        delete idToResponses[id];
 
         emit OracleReturned(id, response);
     }
