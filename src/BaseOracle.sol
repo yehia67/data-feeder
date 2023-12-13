@@ -39,9 +39,8 @@ contract BaseOracle is Ownable, IBaseOracle {
         flatFee = _flatFees;
         emit UpdateFlatFees(flatFee);
     }
+
     function withdrawAll() external {
         payable(owner()).transfer(address(this).balance);
     }
 }
-
-
